@@ -17,5 +17,7 @@ terraform output -json |\
 jq -r '.instance_ip_addr.value' |\
 xargs -I {} curl http://{}:8080 -m 10
 
+sleep 30
+
 # If request succeeds, destroy the resources
 terraform destroy -auto-approve
